@@ -1,0 +1,105 @@
+.tab{
+	display: block;
+	width: 100%;
+	border: 1px solid #ccc;
+	
+}
+
+.first-tr{
+	background: #f6f7f9;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	
+}
+.first-tr th{
+	border-right:2px solid rgba(209, 218, 223, 0.4);
+}
+.first-tr th:nth-of-type(1){
+	width: 150px;
+	
+}
+.first-tr th:nth-of-type(2){
+	width: 200px;
+}
+.first-tr th:nth-of-type(3){
+	width: 80px;
+}
+.first-tr th:nth-of-type(4){
+	width: 280px;
+}
+.first-tr th:nth-of-type(5){
+	width: 70px;
+}
+.first-tr th:nth-of-type(6){
+	width: 100px;
+}
+.tab td{
+	height: 42px;
+	text-align: center;
+}
+.tab td span{
+	float: left;
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url(/images/img/schu.png) no-repeat;
+	cursor: pointer;
+}
+.tab td i{
+	float: right;
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url(/images/img/read.png) no-repeat;
+	cursor: pointer;
+}
+#nav1{
+	display: block;
+	overflow: hidden;
+	width: 290px;
+	left: 400px;
+	position: absolute;
+	bottom: 0;
+}
+#nav1 li{
+	float: left;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #CCCCCC;
+}
+#nav1 li a{
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.back{
+	display: block;
+	cursor: pointer;
+	width: 80px;
+	color: red;
+	font-size: 16px;
+}
+
+.boxing{
+	width: 100%;
+	height: 273px;
+	border: 1px dashed #3d4f1b;
+}
+.boxing p{
+	height: 30px;
+    margin: 10px 0;
+}
+.boxing p strong{
+	font-size: 18px;
+	margin-left: 300px;
+}
+.boxing .backoff{
+	height: 30px;
+	width: 200px;
+	background: green;
+	color: white;
+	margin-left: 300px;
+	margin-top: 20px;
+}

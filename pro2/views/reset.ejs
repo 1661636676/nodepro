@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/zhangdan.css' />
+     <!--<link rel='stylesheet' href='/stylesheets/detail1.css' />-->
+    <link rel='stylesheet' href='/stylesheets/public.css' />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+<body class="login_bg">
+ <header class="publicHeader">
+ 	 <h1>超市账单管理系统</h1>
+
+    <div class="publicHeaderR">
+        <p><span class="hours" style="margin-right: 5px;">下午好！</span><span style="color: #fff21b"><%-user %></span> , 欢迎你！</p>
+        <a href="/relogin">退出</a>
+    </div>
+ </header>
+ 
+  <section class="publicTime">
+    <span id="time">2015年1月1日 11:11  星期一</span>
+    <a href="#">温馨提示：为了能正常浏览，请使用高版本浏览器！（IE10+）</a>
+ </section>
+
+
+
+
+
+  <section class="publicMian">
+    <div class="left">
+        <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+        <nav>
+            <ul class="list">
+                <li ><a href="/billList">账单管理</a></li>
+                <li><a href="/billList">供应商管理</a></li>
+                <li><a href="/billList">用户管理</a></li>
+                <li><a href="/reset">密码修改</a></li>
+                <li><a href="/">退出系统</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="right">
+        <div class="location">
+                <strong>你现在所在的位置是:</strong>
+                <span>密码修改</span>
+       </div>
+       
+        <div class="providerAdd">
+       	<div class="boxmain">
+       		<div class="d1" ><label style="margin-right: 17px;">旧密码:</label><input type="text" class="pass"></div>
+       		<div class="d2" ><label style="margin-right: 17px;">新密码:</label><input type="text" class="newpass"><span class="rul1"></span></div>
+       	  <div class="d2"><label>重复密码:</label><input type="text" class="repeatpass"><span class="rul2"></span></div>
+             <input type="button" value="保存" class="bt1" disabled="disabled" style="margin-left: 120px;width:200px;height:40px;background:green;font-size: 20px;color: #fff;"/> 
+            
+       	</div>
+       	      
+       </div>
+    </div>
+</section>
+
+
+    
+  </body>
+  <script type="text/javascript">
+  	$('.bt1').click(function(){
+	  		$.ajax({
+	  		type:"post",
+	  		url:"users/reset",
+	  		async:true,
+	  		data:{
+	  			pass:$('.pass').val(),
+	  			newpass:$('.newpass').val()
+	  		},
+	  		success:function(data){
+	  			if(data==1){
+	  				alert('密码不存在')
+	  			}else if(data==2){
+	  				alert('密码已修改请重新登录')
+	  				location.href='/'
+	  			}
+	  		}
+	  	});
+  	})
+  </script>
+  <script src="/javascripts/reset.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/javascripts/time.js" type="text/javascript" charset="utf-8"></script>
+</html>

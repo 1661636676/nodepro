@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+     <link rel='stylesheet' href='/stylesheets/detail1.css' />
+    <link rel='stylesheet' href='/stylesheets/public.css' />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+<body class="login_bg">
+ <header class="publicHeader">
+ 	 <h1>超市账单管理系统</h1>
+
+    <div class="publicHeaderR">
+        <p><span class="hours" style="margin-right: 5px;">下午好！</span><span style="color: #fff21b"><%-user %></span> , 欢迎你！</p>
+        <a href="/relogin">退出</a>
+    </div>
+ </header>
+ 
+  <section class="publicTime">
+    <span id="time">2015年1月1日 11:11  星期一</span>
+    <a href="#">温馨提示：为了能正常浏览，请使用高版本浏览器！（IE10+）</a>
+ </section>
+
+
+
+
+
+  <section class="publicMian">
+    <div class="left">
+        <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+        <nav>
+            <ul class="list">
+                <li ><a href="/billList">账单管理</a></li>
+                <li><a href="/billList">供应商管理</a></li>
+                <li><a href="/billList">用户管理</a></li>
+                <li><a href="/reset">密码修改</a></li>
+                <li><a href="/">退出系统</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="right">
+        <img class="wColck" src="/images/img/clock.jpg" alt=""/>
+        <div class="wFont">
+            <h2 class="name"><%-user %></h2>
+            <p class="p1">欢迎来到超市账单管理系统!</p>
+        </div>
+    </div>
+</section>
+
+
+    
+  </body>
+  <script src="/javascripts/time.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/list1.css' />
+    <link rel='stylesheet' href='/stylesheets/public.css' />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+<body class="login_bg">
+ <header class="publicHeader">
+ 	 <h1>超市账单管理系统</h1>
+
+    <div class="publicHeaderR">
+        <p><span class="hours" style="margin-right: 5px;">下午好！</span><span style="color: #fff21b"><%-user %></span> , 欢迎你！</p>
+        <a href="/relogin">退出</a>
+    </div>
+ </header>
+ 
+  <section class="publicTime">
+    <span id="time">2015年1月1日 11:11  星期一</span>
+    <a href="#">温馨提示：为了能正常浏览，请使用高版本浏览器！（IE10+）</a>
+ </section>
+
+
+
+
+
+  <section class="publicMian">
+    <div class="left">
+        <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+        <nav>
+            <ul class="list">
+                <li ><a href="/billList">账单管理</a></li>
+                <li><a href="/billList">供应商管理</a></li>
+                <li><a href="/billList">用户管理</a></li>
+                <li><a href="/reset">密码修改</a></li>
+                <li><a href="/">退出系统</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="right">
+       <div class="location">
+                <strong>你现在所在的位置是:</strong>
+                <span>账单管理页面</span>
+       </div>
+       
+       <div class="search">
+                <span>商品名称：</span>
+                <input type="text" placeholder="请输入商品的名称" class="put"/>
+                
+                <span>供应商：</span>
+                <select name="tigong" class="gongying">
+                    <option value="">--请选择--</option>
+                    <option value="">北京市粮油总公司</option>
+                    <option value="">邯郸市五得利面粉厂</option>
+                </select>
+
+                <span>是否付款：</span>
+                <select name="fukuan" class="fukuan">
+                    <option value="">--请选择--</option>
+                    <option value="">是</option>
+                    <option value="">否</option>
+                </select>
+
+                <a href="javascript:;" class="btn1">查询</a>
+                <a href="/billAdd" class="a11">添加订单</a>
+       </div>
+       
+       
+
+           <table class="tab">
+				    	<tr class="first-tr"><th>账单编号</th><th>商品名称</th><th>账单金额</th><th>供应商</th><th>是否付款</th><th class="last-th">操作</th></tr>
+				    	<% if(data1){ %>
+				    		<% data1.map((item,i)=>{ %>
+				    			<tr class="<%- item.price %>">
+				    			<td><%- i %></td>
+				    			<td><%- item.name %></td>
+				    			<td><%- item.price %></td>
+				    			<td><%- item.gong %></td>
+				    			<td><%- item.options %></td>
+				    			<td><span class="<%- item.price %>"></span><i class="<%- item.price %>" onclick="location.href='/check?<%- item.price %>'"></i></td>
+				    		</tr>	
+				    		<% }) %>		
+				    	<% }else{ %>
+				    	<% data.map((item,i)=>{ %>
+				    		<tr class="<%- item.price %>">
+				    			<td><%- i %></td>
+				    			<td><%- item.name %></td>
+				    			<td><%- item.price %></td>
+				    			<td><%- item.gong %></td>
+				    			<td><%- item.options %></td>
+				    			<td><span class="<%- item.price %>"></span><i class="<%- item.price %>" onclick="location.href='/check?<%- item.price %>'"></i></td>
+				    		</tr>
+				    	<% }) %>
+				    	<% } %>
+				    </table>
+				    <span class="back" onclick="location.href='/back'">取消查询>></span>
+				    <nav aria-label="Page navigation" id="nav1">
+							  <ul class="pagination">
+							    <li>
+							      <a href="/billList?pageNO=<%-pageNO<1?1:parseInt(pageNO)-1 %>" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							      </a>
+							    </li>
+							    <% if(page>4){ %>
+							    <li><a href="/billList?pageNO=1">1</a></li>
+							    <li><a href="/billList?pageNO=2">2</a></li>
+							    <li><a href="#">...</a></li>
+							    <li><a href="/billList?pageNO=<%-page-1 %>"><%-page-1 %></a></li>
+							    <li><a href="/billList?pageNO=<%-page %>"><%-page %></a></li>
+							    <% }else{ %>
+							    		<% for(let i=0;i<page;i++){ %>
+								    		<li><a href="/billList?pageNO=<%-i+1 %>"><%-i+1 %></a></li>
+								    	<% } %>
+							    <% } %>	
+							    <li>
+							      <a href="/billList?pageNO=<%-pageNO>page?page:parseInt(pageNO)+1 %>" aria-label="Next">
+							        <span aria-hidden="true">&raquo;</span>
+							      </a>
+							    </li>
+                </ul>
+            </nav>
+    </div>
+
+</section>
+
+
+    
+  </body>
+  <script type="text/javascript">
+  	$('.tab').click(function(ev){
+  		 var ev=ev||$(window).event
+  		 var ele=ev.target||ev.srcElement
+  		 if(ele.nodeName=='SPAN'){
+		 	  /*console.log(ele.className)
+  		 	   console.log($(ele).parent().parent().index())*/
+		 	  $('.tab tr').eq($(ele).parent().parent().index()).remove()
+          $.ajax({
+          	type:"post",
+          	url:"/users/del",
+          	data:{
+          		price:ele.className
+          	},
+          	async:true,
+          	success:function(data){
+          		console.log(data)
+          	}
+          });
+  		 }
+  	})
+  	
+  	$('.btn1').click(function(){
+  		 $.ajax({
+  		 	type:"post",
+  		 	url:"/users/billList",
+  		 	data:{
+  		 		name:$('.put').val(),
+  		 		gong:$(".gongying").find("option:selected").text(),
+  		 		options:$(".fukuan").find("option:selected").text()
+  		 	},
+  		 	success:function(data){
+  		 		if(data==1){
+  		 			location.href='/billList'
+  		 		}
+  		 	}
+  		 });
+  	})
+  </script>
+  <script src="/javascripts/time.js" type="text/javascript" charset="utf-8"></script>
+</html>

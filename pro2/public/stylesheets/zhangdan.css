@@ -1,0 +1,27 @@
+.providerAdd{
+  		height:400px;
+  		width: 1000px;
+  		border: 1px solid #9ac70f;
+  		margin: 0 auto;
+  	}
+  	.boxmain{
+  		margin: 0 auto;
+  		width: 450px;
+  		padding-left: 50px;
+  	}
+  	.d1,.d2,.d3,.d4{
+  		width: 500px;
+  		margin: 20px 0;
+  	}
+  	label{
+  		font-size: 20px;
+  	}
+  	input{
+  		height: 30px;
+  		border-radius: 5px;
+  		width: 300px;
+  	}
+  	select{
+  		height: 30px;
+  		border-radius: 5px;
+  	}
